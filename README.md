@@ -1,104 +1,93 @@
-# Identify the Animal Challenge — Animal Detection & Classification
+# Intelligent Driver Assistance System for Animal-Vehicle Collision Avoidance Using Computer Vision
 
 ## Overview
 
-This project is based on an animal image classification challenge focused on identifying animal species from wildlife images. The work explores deep learning for computer vision and also connects the problem to practical applications such as reducing animal-vehicle accidents.
+This project focuses on developing an AI-based driver assistance system to help reduce the risk of animal-vehicle collisions using computer vision.
 
-## Challenge
+The system is designed to analyze road-scene images or video and identify animals entering or crossing the vehicle's path. When a potential collision risk is detected, the system can support an automated warning mechanism to alert the driver.
 
-The challenge provides 19,000 images covering 30 animal species. The task is to predict the probability for each animal class from a given image; the class with the highest probability is taken as the predicted animal.
+## Problem Statement
 
-The wildlife images present real-world difficulties including different poses, cluttered backgrounds, lighting and climate variation, viewpoints, occlusions, and visually similar animal classes.
+Animals unexpectedly crossing roads can create serious safety risks for drivers, particularly on roads where visibility or reaction time may be limited.
 
-## Dataset
+This project explores the use of computer vision and artificial intelligence to assist drivers by detecting animals in road scenes and identifying potential collision situations.
 
-- 13,000 training images
-- 6,000 test images
-- 30 animal species
+## Objectives
 
-The species include antelope, bat, beaver, bobcat, buffalo, chihuahua, chimpanzee, collie, dalmatian, german shepherd, grizzly bear, hippopotamus, horse, killer whale, mole, moose, mouse, otter, ox, persian cat, raccoon, rat, rhinoceros, seal, siamese cat, spider monkey, squirrel, walrus, weasel, and wolf.
+- Detect animals in road-scene images or video.
+- Process visual data using computer-vision techniques.
+- Identify animals entering or crossing the vehicle's path.
+- Support an automated collision-risk warning mechanism.
+- Apply AI to a practical road-safety problem.
 
-## My Solution
-
-I developed the solution using Google Colab and the fast.ai library, which is built on PyTorch.
-
-### Approach
-
-1. Used a pretrained ImageNet-based **ResNeXt-101 64x4d** model as the backbone.
-2. Added two fully connected layers for the animal-classification task.
-3. Selected a suitable learning rate for training.
-4. Initially trained the added fully connected layers.
-5. Fine-tuned the complete network and evaluated it on a validation set.
-6. Applied data augmentation to improve model generalization.
-7. Used **Test Time Augmentation (TTA)** during inference.
-8. After achieving strong validation performance, trained the network again using all available training examples without a validation split.
-
-## Workflow
+## Proposed Workflow
 
 ```text
-Animal Images
-      ↓
-Data Preparation & Augmentation
-      ↓
-Pretrained ResNeXt-101
-      ↓
-Fully Connected Classification Layers
-      ↓
-Fine-Tuning
-      ↓
-Validation / TTA
-      ↓
-Animal Class Probabilities
-      ↓
-Predicted Animal Class
+Camera / Dashcam
+        ↓
+   Video Frames
+        ↓
+Image Preprocessing
+        ↓
+   Animal Detection
+        ↓
+ Road-Scene Analysis
+        ↓
+Collision Risk Assessment
+        ↓
+    Driver Warning
 ```
 
 ## Technologies
 
 - Python
-- PyTorch
-- fast.ai
-- Deep Learning
 - Computer Vision
-- Image Classification
-- Google Colab
-- ResNeXt-101
-- Data Augmentation
-- Test Time Augmentation (TTA)
+- Deep Learning
+- Image Processing
+- Video Processing
+- Artificial Intelligence
 
-## Results
+## Key Features
 
-- **Validation Accuracy:** 97.5%
-- **Leaderboard Position:** 4th place
+- Road-scene image/video analysis
+- Animal detection
+- Computer-vision based processing
+- Potential collision-risk identification
+- Driver warning concept
 
-## Files
+## Project Structure
 
 ```text
 animal-vehicle-collision-avoidance/
 ├── README.md
+├── requirements.txt
+├── src/
 ├── notebooks/
-│   ├── Identify_the_Animal_colab.ipynb
-│   └── Identify_the_Animal_novalid_colab.ipynb
-└── submission/
-    └── subm01.csv
+├── models/
+├── images/
+└── results/
 ```
 
-## Notebooks
+## Results
 
-- `notebooks/Identify_the_Animal_colab.ipynb` — main Colab implementation with training and validation workflow.
-- `notebooks/Identify_the_Animal_novalid_colab.ipynb` — training workflow using all available training examples after model validation.
+Project results can be added here, including:
 
-## Submission
+- Detection examples
+- Model evaluation metrics
+- Sample prediction images
+- Video demonstration
+- Warning/alert screenshots
 
-The prediction output is stored in `submission/subm01.csv` using the class-probability submission format required by the challenge.
+> Add only the actual metrics and outputs produced by the project.
 
 ## Future Improvements
 
-- Evaluate more recent object detection and image-classification architectures.
-- Improve robustness for difficult wildlife conditions.
-- Explore transfer learning with additional pretrained backbones.
-- Add deployment for real-time animal detection from dashcam video.
+- Improve detection performance in low-light conditions.
+- Support additional animal classes.
+- Improve real-time video processing.
+- Integrate distance estimation and vehicle speed.
+- Explore deployment on an embedded or vehicle-mounted device.
 
 ## Disclaimer
 
-This project is intended for educational and research purposes. The reported validation accuracy and leaderboard position are specific to the challenge setup and should not be interpreted as a production safety-system guarantee.
+This project is developed for educational and research purposes. It is intended as a driver-assistance concept and should not be considered a replacement for human attention or professional vehicle safety systems.
