@@ -1,93 +1,133 @@
-# Intelligent Driver Assistance System for Animal-Vehicle Collision Avoidance Using Computer Vision
+# An Intelligent Driver Assistance Framework for Animal–Vehicle Collision Avoidance Using Computer Vision
 
 ## Overview
 
-This project focuses on developing an AI-based driver assistance system to help reduce the risk of animal-vehicle collisions using computer vision.
+This project presents a low-cost, vision-based driver assistance framework for detecting animals on roads and highways, estimating their approximate distance from a vehicle, and generating driver alerts to help reduce animal–vehicle collision risk.
 
-The system is designed to analyze road-scene images or video and identify animals entering or crossing the vehicle's path. When a potential collision risk is detected, the system can support an automated warning mechanism to alert the driver.
+The project is focused on Indian road/highway conditions, with cows as the primary target animal. A front-mounted camera captures road video, the system processes the video frames, detects the animal, estimates distance, and generates an alert when required.
 
 ## Problem Statement
 
-Animals unexpectedly crossing roads can create serious safety risks for drivers, particularly on roads where visibility or reaction time may be limited.
-
-This project explores the use of computer vision and artificial intelligence to assist drivers by detecting animals in road scenes and identifying potential collision situations.
+Animals can suddenly enter or cross highways, while driver reaction time becomes limited at higher speeds. The project addresses this problem by automatically detecting animals in road scenes and providing an early warning to the driver.
 
 ## Objectives
 
-- Detect animals in road-scene images or video.
-- Process visual data using computer-vision techniques.
-- Identify animals entering or crossing the vehicle's path.
-- Support an automated collision-risk warning mechanism.
-- Apply AI to a practical road-safety problem.
+- Design a vision-based animal detection system.
+- Detect animals from video input.
+- Estimate the approximate distance between the vehicle and detected animal.
+- Generate driver alerts for collision prevention.
+- Develop a low-cost approach suitable for road and highway environments.
 
-## Proposed Workflow
+## System Workflow
 
 ```text
-Camera / Dashcam
+Front-Mounted Camera
         ↓
-   Video Frames
+   Video Capture
         ↓
-Image Preprocessing
+   Frame Processing
+        ↓
+ HOG Feature Extraction
+        ↓
+Boosted Cascade Classifier
         ↓
    Animal Detection
         ↓
- Road-Scene Analysis
+ Distance Estimation
         ↓
-Collision Risk Assessment
+ Collision Risk Analysis
         ↓
-    Driver Warning
+     Driver Alert
 ```
 
-## Technologies
+## Dataset
 
-- Python
-- Computer Vision
-- Deep Learning
-- Image Processing
-- Video Processing
-- Artificial Intelligence
+A custom dataset was prepared for the project because the work focused on animal detection in Indian road conditions.
 
-## Key Features
+- Positive samples: **700** animal images
+- Negative samples: **1,500** road/background images
+- Primary target: **Cow**
+- Images collected under different weather and lighting conditions
 
-- Road-scene image/video analysis
-- Animal detection
-- Computer-vision based processing
-- Potential collision-risk identification
-- Driver warning concept
+## Computer Vision Approach
 
-## Project Structure
+### HOG Feature Extraction
+
+Histogram of Oriented Gradients (HOG) is used to capture edge, shape, and contour information from animal images. HOG was selected because of its computational efficiency and suitability for real-time computer-vision detection.
+
+### Boosted Cascade Classifier
+
+A boosted cascade classifier based on Gentle AdaBoost is used for animal detection. Multiple weak classifiers are combined into a stronger classifier, while the cascade structure allows non-animal regions to be rejected early.
+
+### Training Parameters
+
+- Positive samples: 700
+- Negative samples: 1,500
+- Cascade stages: 20
+- Feature type: HOG
+- Reported training time: approximately 14 hours
+
+## Distance Estimation
+
+After an animal is detected, its position in the image is used for approximate distance estimation. The system uses camera calibration and a polynomial relationship to convert pixel measurements into real-world distance in meters.
+
+The project report states an observed distance-estimation error of **less than 2%**.
+
+## Driver Alert System
+
+The repository also contains `alert_system.py`, which provides the alert component for the driver-assistance concept. It supports different alert severity levels and optional audio/GPIO hardware integration.
+
+```text
+SAFE → CAUTION → WARNING → DANGER
+```
+
+## Experimental Setup
+
+- Front-mounted vehicle camera
+- Video resolution: **640 × 480**
+- Frame rate: **30 FPS**
+- Tools: **OpenCV and Visual Studio**
+- Tested at multiple vehicle speeds and road/weather conditions
+
+## Reported Results
+
+| Metric | Reported Result |
+|---|---:|
+| Sensitivity / True Positive Rate | **80.4%** |
+| Specificity / True Negative Rate | **83.5%** |
+| Overall detection accuracy | **82.5%** |
+| Maximum detection distance | **20 m** |
+| Effective collision avoidance | **Up to approximately 35 km/h** |
+| Distance estimation error | **< 2%** |
+
+These figures are the results reported in the project report/presentation and are not a newly reproduced benchmark in this repository.
+
+## Repository Contents
 
 ```text
 animal-vehicle-collision-avoidance/
 ├── README.md
-├── requirements.txt
-├── src/
-├── notebooks/
-├── models/
-├── images/
-└── results/
+├── alert_system.py
+├── Identify the Animal_colab.ipynb
+├── Identify_the_Animal_novalid_colab.ipynb
+└── subm01.csv
 ```
 
-## Results
+## Limitations
 
-Project results can be added here, including:
+- Detection is limited by lighting and road-scene conditions.
+- Performance can decrease at higher vehicle speeds.
+- Detection range is limited by the camera and detection setup.
+- The reported system primarily focuses on cows.
 
-- Detection examples
-- Model evaluation metrics
-- Sample prediction images
-- Video demonstration
-- Warning/alert screenshots
+## Future Work
 
-> Add only the actual metrics and outputs produced by the project.
-
-## Future Improvements
-
-- Improve detection performance in low-light conditions.
-- Support additional animal classes.
-- Improve real-time video processing.
-- Integrate distance estimation and vehicle speed.
-- Explore deployment on an embedded or vehicle-mounted device.
+- Use modern deep-learning object-detection models to improve robustness and accuracy.
+- Extend detection to additional animal classes.
+- Improve night-time detection using thermal or low-light cameras.
+- Integrate the system with embedded automotive hardware.
+- Combine animal, pedestrian, and vehicle detection for a broader road-safety system.
 
 ## Disclaimer
 
-This project is developed for educational and research purposes. It is intended as a driver-assistance concept and should not be considered a replacement for human attention or professional vehicle safety systems.
+This project is an academic/research driver-assistance concept. It should not be treated as a certified automotive safety system or as a replacement for driver attention.
