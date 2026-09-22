@@ -1,0 +1,21 @@
+{
+  "session_id": "20260410_092705",
+  "statistics": {
+    "total_frames": 930,
+    "total_detections": 14,
+    "alerts_triggered": 0,
+    "danger_alerts": 0,
+    "warning_alerts": 0,
+    "caution_alerts": 0,
+    "detections_by_class": {
+      "cow": 13,
+      "dog": 1
+    },
+    "average_speed": 38.27956989247312,
+    "max_speed": 90.0,
+    "min_speed": 30.0,
+    "session_start": 1775793425.1403146,
+    "session_end": 1775793506.3309789,
+    "session_duration": 81.19066429138184
+  }
+}

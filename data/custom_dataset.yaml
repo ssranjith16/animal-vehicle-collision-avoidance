@@ -1,0 +1,15 @@
+path: ../dataset
+train: images/train
+val: images/val
+test: images/test
+
+nc: 8
+names:
+  0: cow
+  1: buffalo
+  2: dog
+  3: nilgai
+  4: camel
+  5: elephant
+  6: horse
+  7: goat

@@ -1,0 +1,2 @@
+timestamp,frame_id,class_name,confidence,x1,y1,x2,y2,distance,ttc,speed,alert_level
+1775793268.3480349,523,cow,0.6835376620292664,189,178,215,232,16.203703703703702,1.9444444444444442,30.0,WARNING

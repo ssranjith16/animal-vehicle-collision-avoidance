@@ -1,0 +1,18 @@
+{
+  "session_id": "20260409_224654",
+  "statistics": {
+    "total_frames": 0,
+    "total_detections": 0,
+    "alerts_triggered": 0,
+    "danger_alerts": 0,
+    "warning_alerts": 0,
+    "caution_alerts": 0,
+    "detections_by_class": {},
+    "average_speed": 0,
+    "max_speed": 30.0,
+    "min_speed": 30.0,
+    "session_start": 1775755014.880746,
+    "session_end": 1775755018.1405184,
+    "session_duration": 3.259772539138794
+  }
+}

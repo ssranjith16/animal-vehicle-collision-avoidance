@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+.vscode/
+.idea/
+*.zip
+*.pth
+*.pt
+*.h5
+*.keras
